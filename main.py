@@ -27,10 +27,12 @@ CONTINUATION_EXIT_PHRASE = "AUTOMODE_COMPLETE"
 MAX_CONTINUATION_ITERATIONS = 25
 
 # Initialize the Anthropic client
-client = Anthropic(api_key="YOUR API KEY")
+
+client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY",""),
+                   base_url='http://localhost/api')
 
 # Initialize the Tavily client
-tavily = TavilyClient(api_key="YOUR API KEY")
+tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY",""))
 
 # Set up the conversation memory
 conversation_history = []
